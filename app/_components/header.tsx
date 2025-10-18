@@ -10,9 +10,7 @@ import Link from "next/link";
 
 export function Header() {
   const { user } = useUser();
-  const dbUser = useQuery(api.users.getUserByClerkId, {
-    clerkId: user?.id || "",
-  });
+  const dbUser = useQuery(api.users.getCurrentUser);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [

@@ -223,7 +223,7 @@ export default function ChallengesPage() {
               Active Challenges
             </CardTitle>
             <CardDescription className="text-slate-400">
-              Challenges you're currently working on
+              Challenges you&apos;re currently working on
             </CardDescription>
           </CardHeader>
           <CardContent>

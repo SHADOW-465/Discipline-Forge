@@ -9,8 +9,6 @@ import {
   Target, 
   Calendar, 
   TrendingUp, 
-  Award, 
-  Clock, 
   CheckCircle,
   Flame,
   BarChart3
@@ -123,7 +121,7 @@ export default function DashboardPage() {
           <CardHeader>
             <CardTitle className="text-white flex items-center">
               <CheckCircle className="h-5 w-5 mr-2 text-emerald-500" />
-              Today's Status
+              Today&apos;s Status
             </CardTitle>
             <CardDescription className="text-slate-400">
               {new Date().toLocaleDateString('en-US', { 
@@ -176,7 +174,7 @@ export default function DashboardPage() {
                 <p className="text-slate-400 mb-4">No log entry for today</p>
                 <Link href="/logs">
                   <Button className="bg-emerald-600 hover:bg-emerald-700">
-                    Create Today's Log
+                    Create Today&apos;s Log
                   </Button>
                 </Link>
               </div>

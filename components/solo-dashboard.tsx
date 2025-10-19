@@ -23,13 +23,13 @@ interface SoloDashboardProps {
   userId: Id<"users">;
 }
 
-export function SoloDashboard({ userId }: SoloDashboardProps) {
+export function SoloDashboard({ }: SoloDashboardProps) {
   const [isStartingSession, setIsStartingSession] = useState(false);
   
-  const userStats = useQuery(api.statistics.getUserStatistics, { userId });
-  const activeSession = useQuery(api.sessions.getActiveSession, { userId });
-  const userChallenges = useQuery(api.challenges.getUserChallenges, { userId });
-  const recentLogs = useQuery(api.logs.getLogHistory, { userId, limit: 5 });
+  const userStats = useQuery(api.statistics.getUserStatistics);
+  const activeSession = useQuery(api.sessions.getActiveSession);
+  const userChallenges = useQuery(api.challenges.getUserActiveChallenges);
+  const recentLogs = useQuery(api.logs.getUserDailyLogs, { limit: 5 });
   
   const startSession = useMutation(api.sessions.startSession);
   const endSession = useMutation(api.sessions.endSession);
@@ -37,7 +37,7 @@ export function SoloDashboard({ userId }: SoloDashboardProps) {
   const handleStartSession = async () => {
     setIsStartingSession(true);
     try {
-      await startSession({ userId });
+      await startSession({ goalHours: 24 });
     } catch (error) {
       console.error("Error starting session:", error);
     } finally {
@@ -48,7 +48,7 @@ export function SoloDashboard({ userId }: SoloDashboardProps) {
   const handleEndSession = async () => {
     if (activeSession) {
       try {
-        await endSession({ sessionId: activeSession._id });
+        await endSession({ sessionId: activeSession._id as Id<"sessions"> });
       } catch (error) {
         console.error("Error ending session:", error);
       }

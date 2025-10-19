@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -60,20 +61,6 @@ export default function ChallengesPage() {
     { value: "extreme", label: "Extreme" },
   ];
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "easy":
-        return "bg-green-500";
-      case "medium":
-        return "bg-yellow-500";
-      case "hard":
-        return "bg-orange-500";
-      case "extreme":
-        return "bg-red-500";
-      default:
-        return "bg-slate-500";
-    }
-  };
 
   const getDifficultyBadgeVariant = (difficulty: string) => {
     switch (difficulty) {
@@ -106,7 +93,7 @@ export default function ChallengesPage() {
 
   const handleStartChallenge = async (challengeId: string) => {
     try {
-      await startChallenge({ challengeId });
+      await startChallenge({ challengeId: challengeId as Id<"challenges"> });
     } catch (error) {
       console.error("Error starting challenge:", error);
     }
@@ -114,7 +101,7 @@ export default function ChallengesPage() {
 
   const handleCompleteChallenge = async (userChallengeId: string) => {
     try {
-      await completeChallenge({ userChallengeId });
+      await completeChallenge({ userChallengeId: userChallengeId as Id<"userChallenges"> });
     } catch (error) {
       console.error("Error completing challenge:", error);
     }
@@ -122,7 +109,7 @@ export default function ChallengesPage() {
 
   const handleAbandonChallenge = async (userChallengeId: string) => {
     try {
-      await abandonChallenge({ userChallengeId });
+      await abandonChallenge({ userChallengeId: userChallengeId as Id<"userChallenges"> });
     } catch (error) {
       console.error("Error abandoning challenge:", error);
     }
@@ -223,7 +210,7 @@ export default function ChallengesPage() {
               Active Challenges
             </CardTitle>
             <CardDescription className="text-slate-400">
-              Challenges you're currently working on
+              Challenges you&apos;re currently working on
             </CardDescription>
           </CardHeader>
           <CardContent>

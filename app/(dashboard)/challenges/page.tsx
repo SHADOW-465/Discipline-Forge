@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -92,7 +93,7 @@ export default function ChallengesPage() {
 
   const handleStartChallenge = async (challengeId: string) => {
     try {
-      await startChallenge({ challengeId: challengeId as any });
+      await startChallenge({ challengeId: challengeId as Id<"challenges"> });
     } catch (error) {
       console.error("Error starting challenge:", error);
     }
@@ -100,7 +101,7 @@ export default function ChallengesPage() {
 
   const handleCompleteChallenge = async (userChallengeId: string) => {
     try {
-      await completeChallenge({ userChallengeId });
+      await completeChallenge({ userChallengeId: userChallengeId as Id<"userChallenges"> });
     } catch (error) {
       console.error("Error completing challenge:", error);
     }
@@ -108,7 +109,7 @@ export default function ChallengesPage() {
 
   const handleAbandonChallenge = async (userChallengeId: string) => {
     try {
-      await abandonChallenge({ userChallengeId });
+      await abandonChallenge({ userChallengeId: userChallengeId as Id<"userChallenges"> });
     } catch (error) {
       console.error("Error abandoning challenge:", error);
     }

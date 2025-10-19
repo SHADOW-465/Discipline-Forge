@@ -59,7 +59,7 @@ export default function LogsPage() {
     }
   };
 
-  const handleEdit = (log: { complianceRating: number; journalEntry: string; mood: string }) => {
+  const handleEdit = (log: { _id: string; complianceRating: number; journalEntry: string; mood: "great" | "okay" | "difficult" | "" }) => {
     setFormData({
       complianceRating: log.complianceRating,
       journalEntry: log.journalEntry,
@@ -181,7 +181,7 @@ export default function LogsPage() {
                       <button
                         key={mood.value}
                         type="button"
-                        onClick={() => setFormData(prev => ({ ...prev, mood: mood.value }))}
+                        onClick={() => setFormData(prev => ({ ...prev, mood: mood.value as "great" | "okay" | "difficult" | "" }))}
                         className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
                           formData.mood === mood.value
                             ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"

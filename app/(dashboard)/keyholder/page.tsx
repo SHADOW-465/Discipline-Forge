@@ -11,7 +11,6 @@ import {
   Shield, 
   Settings,
   Play,
-  Pause,
   Square,
   Key,
   Calendar,
@@ -284,7 +283,7 @@ export default function KeyholderDashboardPage() {
           <CardHeader>
             <CardTitle className="text-white flex items-center">
               <Clock className="h-5 w-5 mr-2 text-teal-500" />
-              Today's Status
+              Today&apos;s Status
             </CardTitle>
             <CardDescription className="text-slate-400">
               {new Date().toLocaleDateString('en-US', { 
@@ -336,7 +335,7 @@ export default function KeyholderDashboardPage() {
                 <Calendar className="h-12 w-12 text-slate-500 mx-auto mb-4" />
                 <p className="text-slate-400 mb-4">No log entry for today</p>
                 <Button className="bg-teal-600 hover:bg-teal-700">
-                  Create Today's Log
+                  Create Today&apos;s Log
                 </Button>
               </div>
             )}

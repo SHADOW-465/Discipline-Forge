@@ -6,8 +6,7 @@ import { api } from "@/convex/_generated/api";
 import { ProgramSelectionModal } from "../_components/program-selection-modal";
 import { useState, useEffect } from "react";
 import { UserButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
-import { LogOut, Settings, BarChart3, Calendar, Target, Lock } from "lucide-react";
+import { BarChart3, Calendar, Target, Lock } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

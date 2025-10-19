@@ -9,7 +9,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 export function Header() {
-  const { user } = useUser();
+  const { } = useUser();
   const dbUser = useQuery(api.users.getCurrentUser);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

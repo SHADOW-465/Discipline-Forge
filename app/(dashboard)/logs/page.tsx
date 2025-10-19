@@ -5,7 +5,6 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +16,6 @@ import {
   Meh,
   Plus,
   Edit,
-  Trash2,
   CheckCircle
 } from "lucide-react";
 
@@ -61,7 +59,7 @@ export default function LogsPage() {
     }
   };
 
-  const handleEdit = (log: any) => {
+  const handleEdit = (log: { complianceRating: number; journalEntry: string; mood: string }) => {
     setFormData({
       complianceRating: log.complianceRating,
       journalEntry: log.journalEntry,
@@ -121,7 +119,7 @@ export default function LogsPage() {
             className="bg-emerald-600 hover:bg-emerald-700"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Create Today's Log
+            Create Today&apos;s Log
           </Button>
         )}
       </div>
@@ -183,7 +181,7 @@ export default function LogsPage() {
                       <button
                         key={mood.value}
                         type="button"
-                        onClick={() => setFormData(prev => ({ ...prev, mood: mood.value as any }))}
+                        onClick={() => setFormData(prev => ({ ...prev, mood: mood.value }))}
                         className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
                           formData.mood === mood.value
                             ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
@@ -264,7 +262,7 @@ export default function LogsPage() {
               <div>
                 <CardTitle className="text-white flex items-center">
                   <Calendar className="h-5 w-5 mr-2 text-emerald-500" />
-                  Today's Log
+                  Today&apos;s Log
                 </CardTitle>
                 <CardDescription className="text-slate-400">
                   {new Date().toLocaleDateString('en-US', { 

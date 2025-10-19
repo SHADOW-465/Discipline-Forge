@@ -60,20 +60,6 @@ export default function ChallengesPage() {
     { value: "extreme", label: "Extreme" },
   ];
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "easy":
-        return "bg-green-500";
-      case "medium":
-        return "bg-yellow-500";
-      case "hard":
-        return "bg-orange-500";
-      case "extreme":
-        return "bg-red-500";
-      default:
-        return "bg-slate-500";
-    }
-  };
 
   const getDifficultyBadgeVariant = (difficulty: string) => {
     switch (difficulty) {
@@ -106,7 +92,7 @@ export default function ChallengesPage() {
 
   const handleStartChallenge = async (challengeId: string) => {
     try {
-      await startChallenge({ challengeId });
+      await startChallenge({ challengeId: challengeId as any });
     } catch (error) {
       console.error("Error starting challenge:", error);
     }

@@ -131,7 +131,7 @@ export default function SessionsPage() {
     return `${hours}h ${minutes}m`;
   };
 
-  const getSessionStatus = (session: any) => {
+  const getSessionStatus = (session: { isActive: boolean }) => {
     if (session.isActive) {
       return <Badge className="bg-green-500/20 text-green-400">Active</Badge>;
     } else {

@@ -9,12 +9,9 @@ import {
   Target, 
   Calendar, 
   TrendingUp, 
-  Award, 
-  Clock, 
   CheckCircle,
   Flame,
   BarChart3,
-  Plus,
   Activity
 } from "lucide-react";
 import Link from "next/link";
@@ -25,7 +22,6 @@ export default function SoloDashboardPage() {
   const activeChallenges = useQuery(api.challenges.getUserActiveChallenges);
   const todaysLog = useQuery(api.logs.getTodaysLog);
   const weeklyProgress = useQuery(api.statistics.getWeeklyProgress);
-  const streakHistory = useQuery(api.statistics.getStreakHistory, { days: 30 });
 
   if (!currentUser) {
     return (
@@ -179,7 +175,7 @@ export default function SoloDashboardPage() {
           <CardHeader>
             <CardTitle className="text-white flex items-center">
               <CheckCircle className="h-5 w-5 mr-2 text-emerald-500" />
-              Today's Focus
+              Today&apos;s Focus
             </CardTitle>
             <CardDescription className="text-slate-400">
               {new Date().toLocaleDateString('en-US', { 
@@ -227,7 +223,7 @@ export default function SoloDashboardPage() {
                 )}
                 <Link href="/logs">
                   <Button variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700">
-                    Update Today's Log
+                    Update Today&apos;s Log
                   </Button>
                 </Link>
               </div>
@@ -237,7 +233,7 @@ export default function SoloDashboardPage() {
                 <p className="text-slate-400 mb-4">No log entry for today</p>
                 <Link href="/logs">
                   <Button className="bg-emerald-600 hover:bg-emerald-700">
-                    Create Today's Log
+                    Create Today&apos;s Log
                   </Button>
                 </Link>
               </div>
